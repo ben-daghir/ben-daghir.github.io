@@ -14,24 +14,26 @@ body {
 }
 
 .anchor {
-    height: 5000px;
+    height: 2500px;
 }
 
 .container {
     width: 105%;
     margin: auto;
-    max-height: 600px;
-    overflow-y: scroll;
+    max-height: 400px;
     position: relative;
     z-index: 99;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .image {
     width: 250px;
     height: auto;
+    top: 0px;
     left: 50%;
     margin-left: -125px;
-    position: fixed;
+    position: absolute;
     transition: 0.1s linear;
 }
 
@@ -75,4 +77,33 @@ body {
     color: black;
     font-size: 14px;
     transition: 1s linear;
+}
+
+@keyframes float {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-20px);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+}
+
+.floating-label {
+    animation: float 5s linear infinite;
+    width: 100px;
+    height: 50px;
+    background: rgba(1,1,1,0.3);
+    color: white;
+    margin-left: -50px;
+    margin-top: 165px;
+    opacity: 1;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px rgba(21,153,87,0.5) solid;
 }
