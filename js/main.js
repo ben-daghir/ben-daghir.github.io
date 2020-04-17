@@ -38,12 +38,12 @@ var fadeDiagrams = function(scrollPercent) {
 
 var pauseScroll = function(pause) {
     if (pause) {
-        scrollContainer.style.overflowY = 'hidden'
-        document.body.style.overflowY = 'hidden'
-        setTimeout(() => {
-            scrollContainer.style.overflowY = 'scroll';
-            document.body.style.overflowY = 'scroll'
-        }, 1000)
+//        scrollContainer.style.overflowY = 'hidden'
+//        document.body.style.overflowY = 'hidden'
+//        setTimeout(() => {
+//            scrollContainer.style.overflowY = 'scroll';
+//            document.body.style.overflowY = 'scroll'
+//        }, 1000)
 
     }
     return false
@@ -66,25 +66,25 @@ updateScroll = function(){
         textFade(1, 'image-caption');
         pause1 = pauseScroll(pause1);
 
-    } else if (1250 > scrollTop && scrollTop >= 750) {
-        translateRGBK(1 - ((scrollTop - 750) / (1250 - 750)));
+    } else if (1400 > scrollTop && scrollTop >= 900) {
+        translateRGBK(1 - ((scrollTop - 900) / (1400 - 900)));
         textFade(0, 'image-caption');
         textFade(0, 'diagram-caption');
         fadeDiagrams(0);
         pause2 = true;
 
-    } else if (1500 > scrollTop && scrollTop >= 1250) {
+    } else if (1650 > scrollTop && scrollTop >= 1400) {
         translateRGBK(0);
         textFade(1, 'diagram-caption');
         fadeDiagrams(1);
         pause2 = pauseScroll(pause2);
         translateDiagrams(0);
 
-    } else if (2000 > scrollTop && scrollTop >= 1500) {
+    } else if (2300 > scrollTop && scrollTop >= 1800) {
         textFade(0, 'diagram-caption');
-        translateDiagrams((scrollTop - 1500) / (2000 - 1500));
+        translateDiagrams((scrollTop - 1800) / (2300 - 1800));
 
-    } else if (2500 > scrollTop && scrollTop >= 2000) {
+    } else if (2800 > scrollTop && scrollTop >= 2300) {
         translateDiagrams(1);
 
     }

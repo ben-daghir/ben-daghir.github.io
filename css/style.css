@@ -7,6 +7,12 @@
 
 body {
   overflow-x: hidden;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+    width: 0 !important
 }
 
 * {
@@ -14,7 +20,7 @@ body {
 }
 
 .anchor {
-    height: 2500px;
+    height: 2800px;
 }
 
 .container {
