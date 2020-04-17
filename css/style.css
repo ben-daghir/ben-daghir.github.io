@@ -1,0 +1,78 @@
+@mixin center-v () {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.anchor {
+    height: 5000px;
+}
+
+.container {
+    width: 105%;
+    margin: auto;
+    max-height: 600px;
+    overflow-y: scroll;
+    position: relative;
+    z-index: 99;
+}
+
+.image {
+    width: 250px;
+    height: auto;
+    left: 50%;
+    margin-left: -125px;
+    position: fixed;
+    transition: 0.1s linear;
+}
+
+.image-r {
+    @include center-v;
+    filter: opacity(0.5);
+}
+
+.image-g {
+    @include center-v;
+    filter: opacity(0.4);
+}
+
+.image-b {
+    @include center-v;
+    filter: opacity(0.5);
+}
+
+.image-k {
+    @include center-v;
+    filter: opacity(1);
+}
+
+.image-labels {
+    @include center-v;
+    margin-left: 275px;
+}
+
+.image-fids {
+    @include center-v;
+    margin-left: -525px;
+}
+
+.image-caption {
+    color: black;
+    font-size: 14px;
+    transition: 1s linear;
+}
+
+.diagram-caption {
+    color: black;
+    font-size: 14px;
+    transition: 1s linear;
+}

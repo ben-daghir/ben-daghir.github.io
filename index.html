@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <title>Machine Learning for Satellite Crop Classification</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/github-light.css" media="screen">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="js/main.js"></script>
   </head>
   <body>
     <section class="Introduction">
@@ -17,27 +20,85 @@
     </section>
 
     <section class="main-content">
+      <h3>Introduction
+        <a id="Introduction" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span>
+        </a>
+      </h3>
+      <p>
+        This page documents our semester project for Georgia Tech's Spring 2020 undergrad Introduction to Machine Learning. The goal of this project was to create a program capable of classifying
+        satellite images of crops using seven different labels: maize, cassava, common bean, maize & common bean, maize & cassava, maize & soybean, cassava & common bean.
+      </p>
+
       <h3>
-<a id="Introduction" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introduction</h3>
-<p>
-  This page documents our semester project for Georgia Tech's Spring 2020 undergrad Introduction to Machine Learning. The goal of this project was to create a program capable of classifying
-  satellite images of crops using seven different labels: maize, cassava, common bean, maize & common bean, maize & cassava, maize & soybean, cassava & common bean.
-</p>
-<h3>
-<a id="Data" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Data</h3>
-<p>
-  The dataset we use comes from the Radiant Earth MLHub. The images are of a crop feild in Kenya throughout the growing season (June to November). Over four thousand images
-  are provided all together, 3286 of which are provided for training and 1402 are provided for testing. Images are taken every month within the growing cycle, and the dataset divides
-  provides the snapshots as twelve spectral bands possible for the Sentinel-2 satellite. The feilds in the image are only a few pixels wide.
-</p>
-<h3><a id="Strategy" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Strategy</h3>
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-<h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-<p>You can @mention a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (@defunkt), PJ Hyett (@pjhyett), and Tom Preston-Werner (@mojombo) founded GitHub.</p>
-<h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support or Contact</h3>
-<p>Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
+        Data
+        <a id="Data" class="anchor" href="#designer-templates" aria-hidden="true">
+        <span aria-hidden="true" class="octicon octicon-link"></span></a>
+      </h3>
+      <p>
+        The dataset we use comes from the Radiant Earth MLHub. The images are of a crop feild in Kenya throughout the growing season (June to November). Over four thousand images
+        are provided all together, 3286 of which are provided for training and 1402 are provided for testing. Images are taken every month within the growing cycle, and the dataset divides
+        provides the snapshots as twelve spectral bands possible for the Sentinel-2 satellite. The feilds in the image are only a few pixels wide.
+      </p>
+      <div class="container">
+        <div id="image-k" class="image">
+            <img src="images/k.png" class="image image-k"/>
+            <span style="opacity: 0" class="image-caption">Bands 00, 01, 05 - 09, CLD <br>Invisible Spectrum, Cloud Data</span>
+            <span style="opacity: 0" class="diagram-caption">All Imagine Bands<br>Input</span>
+        </div>
+        <div id="image-b" class="image">
+            <img src="images/b.png" class="image image-b"/>
+            <span style="opacity: 0" class="image-caption">Band 02<br>Visible Blue</span>
+        </div>
+        <div id="image-g" class="image">
+            <img src="images/g.png" class="image image-g"/>
+            <span style="opacity: 0" class="image-caption">Band 03<br>Visible Green</span>
+        </div>
+        <div id="image-r" class="image">
+            <img src="images/r.png" class="image image-r"/>
+            <span style="opacity: 0" class="image-caption">Band 04<br>Visible Red</span>
+        </div>
+        <div id="image-fids" class="image image-fids" style="opacity:0">
+            <img src="images/fids.png" class="image"/>
+            <span style="opacity: 0" class="diagram-caption">Crop Labels<br>Output</span>
+        </div>
+        <div id="image-labels" class="image image-labels" style="opacity:0">
+            <img src="images/labels.png" class="image"/>
+            <span style="opacity: 0" class="diagram-caption">Crop Labels<br>Output</span>
+        </div>
+        <div id="scroll-container" class="container">
+            <div id="scroll-anchor" class="anchor"></div>
+        </div>
+      </div>
+
+      <h3>
+        Strategy
+        <a id="Strategy" class="anchor" href="#creating-pages-manually" aria-hidden="true">
+          <span aria-hidden="true" class="octicon octicon-link"></span>
+        </a>
+      </h3>
+      <p>
+        If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.
+      </p>
+
+      <h3>
+        Authors and Contributors
+        <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true">
+          <span aria-hidden="true" class="octicon octicon-link"></span>
+        </a>
+      </h3>
+      <p>
+        You can @mention a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (@defunkt), PJ Hyett (@pjhyett), and Tom Preston-Werner (@mojombo) founded GitHub.
+      </p>
+
+      <h3>
+        Support or Contact
+        <a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true">
+          <span aria-hidden="true" class="octicon octicon-link"></span>
+        </a>
+      </h3>
+      <p>
+        Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.
+      </p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.gatech.edu/kvu35/CS4641-Project">Cs4641-project</a> is maintained by <a href="https://github.gatech.edu/kvu35">kvu35</a>.</span>
