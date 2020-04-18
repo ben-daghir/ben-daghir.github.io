@@ -52,7 +52,6 @@ var pauseScroll = function(pause) {
 
 var scrollContainer = document.getElementById('scroll-container');
 updateScroll = function(){
-    console.log(scrollContainer.scrollTop)
     var scrollTop = scrollContainer.scrollTop
 
     if (500 > scrollTop && scrollTop >= 0) {
