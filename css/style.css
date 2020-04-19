@@ -1,0 +1,115 @@
+@mixin center-v () {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+body {
+  overflow-x: hidden;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+    width: 0 !important
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.anchor {
+    height: 2800px;
+}
+
+.container {
+    width: 105%;
+    margin: auto;
+    max-height: 400px;
+    position: relative;
+    z-index: 99;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.image {
+    width: 250px;
+    height: auto;
+    top: 0px;
+    left: 50%;
+    margin-left: -125px;
+    position: absolute;
+    transition: 0.1s linear;
+}
+
+.image-r {
+    @include center-v;
+    filter: opacity(0.5);
+}
+
+.image-g {
+    @include center-v;
+    filter: opacity(0.4);
+}
+
+.image-b {
+    @include center-v;
+    filter: opacity(0.5);
+}
+
+.image-k {
+    @include center-v;
+    filter: opacity(1);
+}
+
+.image-labels {
+    @include center-v;
+    margin-left: 275px;
+}
+
+.image-fids {
+    @include center-v;
+    margin-left: -525px;
+}
+
+.image-caption {
+    color: black;
+    font-size: 14px;
+    transition: 1s linear;
+}
+
+.diagram-caption {
+    color: black;
+    font-size: 14px;
+    transition: 1s linear;
+}
+
+@keyframes float {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-20px);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+}
+
+.floating-label {
+    animation: float 5s linear infinite;
+    width: 100px;
+    height: 50px;
+    background: rgba(1,1,1,0.3);
+    color: white;
+    margin-left: -50px;
+    margin-top: 165px;
+    opacity: 1;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px rgba(21,153,87,0.5) solid;
+}

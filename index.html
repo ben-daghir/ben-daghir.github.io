@@ -14,7 +14,7 @@
     <script src="js/jquery.csv.min.js"></script>
   </head>
   <body>
-    <section class="Introduction">
+    <section class="page-header">
       <h1 class="project-name">Machine Learning for Satellite Crop Classification</h1>
       <h2 class="project-tagline"></h2>
       <a href="https://github.gatech.edu/kvu35/CS4641-Project" class="btn">View on GitHub</a>
@@ -27,12 +27,12 @@
       </h2>
       <p>
         Agriculture is very important to the global community, not only to provide a basic need for human survival but also as a main driver of economic growth, especially in developing countries. Having accurate and reliable agricultural data is essential for food security and to monitor economic growth. Having data taken from satellites of different regions over time can be helpful in building models to monitor agriculture to help increase farming productivty and prevent possible losses. Compared to surveying land using traditional methods, being able to use satellite data provides more accuracy and provides data at a scale with high spatial granularity. However, the large amount of data taken needs to be able to be analyzed efficiently to help predict useful information. For this project we chose to focus on the problem of identifying crop types from satellite images as there are many different types of crops being grown in a region and it is essential to first identify the crop type before analyzing any trends.
-
       </p>
     </section>
 
     <section>
       <div class="main-content">
+
         <h2>
           Data
           <a id="Data" class="anchor" href="#designer-templates" aria-hidden="true">
@@ -42,6 +42,7 @@
           The dataset we used for our project comes from the Radiant Earth MLHub and was accessed via a RESTful API. The dataset contains over four thousand time-series raster images of farmland fields taken by a Sentinel-2 satellite. The images taken consist of 12 separate frequency spectrum imaging bands and cloud interference probability for each pixel. Images are taken every month within the growing cycle and multiple fields can be present in one image which results in some fields only being a few pixels wide. We used 3286 images for training our models and 1402 images were provided for testing. Our project will attempt to correctly classify the results into the 7 â€˜crop idsâ€™ provided by the dataset with the highest accuracy possible.
         </p>
       </div>
+
       <div class="container">
         <div id="image-k" class="image">
             <img src="images/k.png" class="image image-k"/>
@@ -77,6 +78,7 @@
       </div>
     </section>
 
+
     <section class="main-content">
       <h2>
         Strategy
@@ -102,21 +104,12 @@
         </a>
       </h3>
       <p>
+
         The Multi-Layered Perceptron Model will use the twelve spectrum imaging bands and cloud data per â€˜field idâ€™ in a single aggregated matrix form. Each matrix entry represents a pixel corresponding to a geographical field location. The output will be a column vector containing the probability that crop X was in that â€˜field id.â€™
         </p>
         <p>
         We performed two different studies using the MLP model. The first was an activation studied which tested how the loss and accuracy changed from using different activation functions for different epoch values. We also performed a hidden layer study in which we varied the number of hidden layers used. For both of these we utilized the functions built in to the Keras API.
         </p>
-
-      <div class="image">
-           <img src="images/LayerNumbers-Loss-Plots.png" class="image image-loss" style="left: 50%; top: 0px">
-           <span class="image-caption">Hidden Layers Study<br>- Loss </span>
-      </div>
-      <div class="image">
-            <img src="images/LayerNumbers-Accuracy-Plot.png" class="image image-accuracy">
-          <span class="image-caption">Hidden Layers Study<br>Accuracy</span>
-    </div>
-
     </section>
 
 
@@ -188,4 +181,5 @@
     </section>
   </body>
   <script src="js/main.js"></script>
+  <script src="js/plotly.js"></script>
 </html>
