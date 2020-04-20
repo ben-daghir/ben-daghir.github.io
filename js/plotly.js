@@ -27,6 +27,26 @@ var loadData = function(path) {
     return data_dict
 }
 
+/**
+file.csv
+
+column1 | column2 | .....
+--------------------------
+1       | 2       |
+2       |  -332   |
+534     | 0.123   |
+
+
+output = loadData('file.csv')
+
+output = {
+    'column1': [1, 2, 534]
+    'column2': [2, -332, 0.123]
+}
+
+output['column1'] = [1, 2, 534]
+
+**/
 
 /**
 * * * Hidden Layer Study Plots * * *
