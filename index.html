@@ -14,36 +14,35 @@
     <script src="js/jquery.csv.min.js"></script>
   </head>
   <body>
-    <section class="Introduction">
+    <section class="page-header">
       <h1 class="project-name">Machine Learning for Satellite Crop Classification</h1>
       <h2 class="project-tagline"></h2>
       <a href="https://github.gatech.edu/kvu35/CS4641-Project" class="btn">View on GitHub</a>
     </section>
 
     <section class="main-content">
-      <h3>Introduction
+      <h2>The Problem and Motivation
         <a id="Introduction" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span>
         </a>
-      </h3>
+      </h2>
       <p>
-        This page documents our semester project for Georgia Tech's Spring 2020 undergrad Introduction to Machine Learning. The goal of this project was to create a program capable of classifying
-        satellite images of crops using seven different labels: maize, cassava, common bean, maize & common bean, maize & cassava, maize & soybean, cassava & common bean.
+        Agriculture is very important to the global community, not only to provide a basic need for human survival but also as a main driver of economic growth, especially in developing countries. Having accurate and reliable agricultural data is essential for food security and to monitor economic growth. Having data taken from satellites of different regions over time can be helpful in building models to monitor agriculture to help increase farming productivty and prevent possible losses. Compared to surveying land using traditional methods, being able to use satellite data provides more accuracy and provides data at a scale with high spatial granularity. However, the large amount of data taken needs to be able to be analyzed efficiently to help predict useful information. For this project we chose to focus on the problem of identifying crop types from satellite images as there are many different types of crops being grown in a region and it is essential to first identify the crop type before analyzing any trends.
       </p>
     </section>
 
     <section>
       <div class="main-content">
-        <h3>
+
+        <h2>
           Data
           <a id="Data" class="anchor" href="#designer-templates" aria-hidden="true">
           <span aria-hidden="true" class="octicon octicon-link"></span></a>
-        </h3>
+        </h2>
         <p>
-          The dataset we use comes from the Radiant Earth MLHub. The images are of a crop feild in Kenya throughout the growing season (June to November). Over four thousand images
-          are provided all together, 3286 of which are provided for training and 1402 are provided for testing. Images are taken every month within the growing cycle, and the dataset divides
-          provides the snapshots as twelve spectral bands possible for the Sentinel-2 satellite. The feilds in the image are only a few pixels wide.
+          The dataset we used for our project comes from the Radiant Earth MLHub and was accessed via a RESTful API. The dataset contains over four thousand time-series raster images of farmland fields taken by a Sentinel-2 satellite. The images taken consist of 12 separate frequency spectrum imaging bands and cloud interference probability for each pixel. Images are taken every month within the growing cycle and multiple fields can be present in one image which results in some fields only being a few pixels wide. We used 3286 images for training our models and 1402 images were provided for testing. Our project will attempt to correctly classify the results into the 7 â€˜crop idsâ€™ provided by the dataset with the highest accuracy possible.
         </p>
       </div>
+
       <div class="container">
         <div id="image-k" class="image">
             <img src="images/k.png" class="image image-k"/>
@@ -81,30 +80,86 @@
     </section>
 
     <section class="main-content">
+      <h2>
+        Strategy
+        <a id="Strategy" class="anchor" href="#creating-pages-manually" aria-hidden="true">
+          <span aria-hidden="true" class="octicon octicon-link"></span>
+        </a>
+      </h2>
+      <p>
+        We decided to approach this problem using two different methods:
+    <ol>
+        <li>Artificial Neural Networks (ANN) Multi-Layered Perceptron (MLP) Model</li>
+        <li>Multi-Class Support Vector Machines (MSVM) Model</li>
+    </ol>
+      </p>
+    </section>
+
+
+    <section class="main-content">
+      <h3>
+        Artificial Neural Network (ANN): Multi-Layered Perceptron Model
+        <a id="ANN" class="anchor" href="#creating-pages-manually" aria-hidden="true">
+          <span aria-hidden="true" class="octicon octicon-link"></span>
+        </a>
+      </h3>
+      <p>
+        The Multi-Layered Perceptron Model will use the twelve spectrum imaging bands and cloud data per â€˜field idâ€™ in a single aggregated matrix form. Each matrix entry represents a pixel corresponding to a geographical field location. The output will be a column vector containing the probability that crop X was in that â€˜field id.â€™
+      </p>
+      <p>
+        We performed two different studies using the MLP model. The first was an activation studied which tested how the loss and accuracy changed from using different activation functions for different epoch values. We also performed a hidden layer study in which we varied the number of hidden layers used. For both of these we utilized the functions built in to the Keras API.
+      </p>
       <h3>Multilayer Perceptron (MLP) Studies</h3>
       <p>This section focuses on vary different hyper-parameters of the Multilayer Perceptron Model... etc. etc. fill in later</p>
       <div id="hidden-layer-study"></div>
     </section>
 
+
     <section class="main-content">
       <h3>
-        Strategy
-        <a id="Strategy" class="anchor" href="#creating-pages-manually" aria-hidden="true">
+        Multi-Class Support Vector Machines (MSVM) Model
+        <a id="MCSVM" class="anchor" href="#creating-pages-manually" aria-hidden="true">
           <span aria-hidden="true" class="octicon octicon-link"></span>
         </a>
       </h3>
       <p>
-        If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.
+        MCSVM-Model
       </p>
+    </section>
 
-      <h3>
+     <section class="main-content">
+      <h2>
+        Results
+        <a id="Results" class="anchor" href="#creating-pages-manually" aria-hidden="true">
+          <span aria-hidden="true" class="octicon octicon-link"></span>
+        </a>
+      </h2>
+      <p>
+        Results
+      </p>
+    </section>
+
+    <section class="main-content">
+      <h2>
+        Discussion
+        <a id="Discussion" class="anchor" href="#creating-pages-manually" aria-hidden="true">
+          <span aria-hidden="true" class="octicon octicon-link"></span>
+        </a>
+      </h2>
+      <p>
+        Discussion
+      </p>
+    </section>
+
+    <section class="main-content">
+      <h2>
         Authors and Contributors
         <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true">
           <span aria-hidden="true" class="octicon octicon-link"></span>
         </a>
-      </h3>
+      </h2>
       <p>
-        You can @mention a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (@defunkt), PJ Hyett (@pjhyett), and Tom Preston-Werner (@mojombo) founded GitHub.
+        Luka Derado, Benjamin Daghir, Erin McCaskey, Khang Vu (@),(@), (@)
       </p>
     </section>
 
@@ -116,7 +171,7 @@
         </a>
       </h3>
       <p>
-        Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.
+        Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and weâ€™ll help you sort it out.
       </p>
     </section>
 
