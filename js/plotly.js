@@ -37,7 +37,9 @@ column1 | column2 | .....
 534     | 0.123   |
 
 
+
 output = loadData('file.csv')
+
 
 output = {
     'column1': [1, 2, 534]
@@ -141,4 +143,6 @@ var data = [{
 
 var layout = {};
 
+
 Plotly.newPlot('feature-analysis-plot', data, layout);
+
