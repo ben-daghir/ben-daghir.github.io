@@ -94,4 +94,7 @@ updateScroll = function(){
 
 console.log('adding event listeners...')
 scrollContainer.addEventListener("scroll", updateScroll);
+textFade(0, 'image-caption');
+textFade(0, 'diagram-caption');
+
 
