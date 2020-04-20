@@ -80,3 +80,45 @@ var layout = {
 };
 
 Plotly.newPlot('hidden-layer-study', accuracy_traces, layout);
+
+
+/**
+* * * * Feature Visualization * * * *
+**/
+
+// Load the data
+data = loadData('data/feature_analysis/stratified_crop_data.csv')
+
+// Generate dimensional array
+
+dims = []
+for (var band in data) {
+    console.log(band)
+    console.log(data[band])
+    dims.push({
+        label: band,
+        values: data[band]
+    });
+}
+console.log(dims)
+
+var data = [{
+  type: 'parcoords',
+  pad: [80,80,80,80],
+  line: {
+    color: data['Crop ID'],
+    colorscale: [[0, 'red'],
+                 [0.5, 'green'],
+                 [1, 'blue'],
+                 [3, 'black'],
+                 [4, 'yellow'],
+                 [5, 'orange'],
+                 [6, 'purple']]
+  },
+
+  dimensions: dims
+}];
+
+var layout = {};
+
+Plotly.newPlot('feature-analysis-plot', data, layout);
