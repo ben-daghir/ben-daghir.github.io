@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
@@ -76,10 +76,23 @@
             <div id="scroll-anchor" class="anchor"></div>
         </div>
       </div>
+       <div style="max-width: 1200px; margin: auto;" id="feature-analysis-plot"></div>
+    </section>
+
+    <section>
+    <div class="main-content">
+      <h3>Training and Testing Dataset:
+        <a id="Training-testing-dataset" class="anchor" href="#creating-pages-manually" aria-hidden="true">
+          <span aria-hidden="true" class="octicon octicon-link"></span>
+        </a></h3>
+        <p>For our training and testing dataset, we used the images provided with a known field ID. We randomly chose 80% of the images to use to train our model, with the remaining 20% left to train the model. All of the images were already sized to be the same. However, to feed the images into the network we needed to flatten the training data (N, C, H, W) to be in the shape of (N, C X H X W). For each study we computed the loss and accuracy to compare between studies. **NOT SURE HOW DATA WAS MANIPULATED - THIS WILL NEED CHANGED ***
+        </p>
+    </div>
     </section>
 
 
-    <section class="main-content">
+     <section>
+      <div class="main-content">
       <h2>
         Strategy
         <a id="Strategy" class="anchor" href="#creating-pages-manually" aria-hidden="true">
@@ -93,39 +106,56 @@
         <li>Multi-Class Support Vector Machines (MSVM) Model</li>
     </ol>
       </p>
+    </div>
     </section>
 
 
-    <section class="main-content">
+    <section>
+      <div class="main-content">
       <h3>
         Artificial Neural Network (ANN): Multi-Layered Perceptron Model
-        <a id="Strategy" class="anchor" href="#creating-pages-manually" aria-hidden="true">
+        <a id="ANN" class="anchor" href="#creating-pages-manually" aria-hidden="true">
           <span aria-hidden="true" class="octicon octicon-link"></span>
         </a>
       </h3>
       <p>
-
-        The Multi-Layered Perceptron Model will use the twelve spectrum imaging bands and cloud data per â€˜field idâ€™ in a single aggregated matrix form. Each matrix entry represents a pixel corresponding to a geographical field location. The output will be a column vector containing the probability that crop X was in that â€˜field id.â€™
+        A Multi-Layered Perceptron (MLP) is a supervised learning algorithm that consists of an input, several hidden layers, and an output later. Each hidden layer has nodes that use activation functions. MLP then uses backpropogation to train the network and update the nodes. We chose to use this approach because the MLP can capture more complex and non-linear features in the dataset. Our MLP Model will use the twelve spectrum imaging bands and cloud data per field id in a single aggregated matrix form. Each matrix entry represents a pixel corresponding to a geographical field location. The output will be a column vector containing the probability that crop X was in that field id.
         </p>
         <p>
-        We performed two different studies using the MLP model. The first was an activation studied which tested how the loss and accuracy changed from using different activation functions for different epoch values. We also performed a hidden layer study in which we varied the number of hidden layers used. For both of these we utilized the functions built in to the Keras API.
+        We performed two different studies using the MLP model. The first was an activation study which tested how the loss and accuracy changed from using different activation functions for different epoch values. We also performed a hidden layer study in which we varied the number of hidden layers used. For both of these studies we utilized the functions built in to the Keras API.
         </p>
+
+        <h4>Activation Function Study Results:</h4>
+        <p> For this study we varied activation functions for different epoch values. One epoch is when the entire dataset is passed forward and backward through the neural network. As the number of epochs are increased the weights are changed in the neural network nore and the model will change from underfitting the data to becoming optimal and then overfitting which is why experimentation is needed for different datasets to determine the optimal epoch value. An activation function needs to be applied for a MLP model to allow the network to represent non-linear complex functional mappings between inputs and outputs. The optimal activaton function varies between datasets which is why we also varied the activation functions used for this study. We recorded losses and accuracy to determine the optimal epoch value and activation function for our dataset.
+        </p>
+        <h4>Hidden Layer Study Results:</h4>
+        <p>For our hidden layer study we also varied the number of epochs for the reason explained in the previous section. For this study we also varied the number of hidden layers. A single-layer artificial neural network has a single layer of nodes and each node connects directly to an input variable and then contributes to an output variable. To create a multilayer perceptron a single layer netwrok is extended where it has an input layer that connects to the input variables, one or more hidden layers, and an output layer that produces the output variables. Because of the complexity of our dataset, a multi-layered model can be more accurate. To determine the optimal number of layers for our model, we need to experiment with different numbers of them which is what we do in this study.
+        </p>
+
+        <div style="max-width: 1200px; margin: auto;" id="hidden-layer-study"></div>
+
+        <h4>Comparison Between Both Studies:</h4>
+        <p>When comparing our activation study and our hidden layer study, the --- study provided more accuracy in predicting the correct crop ID. </p>
+      </div>
     </section>
 
 
-    <section class="main-content">
+     <section>
+      <div class="main-content">
       <h3>
         Multi-Class Support Vector Machines (MSVM) Model
-        <a id="Strategy" class="anchor" href="#creating-pages-manually" aria-hidden="true">
+        <a id="MSVM" class="anchor" href="#creating-pages-manually" aria-hidden="true">
           <span aria-hidden="true" class="octicon octicon-link"></span>
         </a>
       </h3>
       <p>
-        MCSVM-Model
+        We chose to test a multi-class support vector machine model because SVMs are often used for classification tasks and tend to perform well with many problem types. An SVM constructs hyperplanes in multidimensional space that separates cases of different class labels. If your dataset has more than two classes (non-binary classification) then you use a multi-class suppor vector machine model. An SVM classifies data by determining the optimal hyperplane that separates observations according to their class labels. The main idea when using a MSVM is to transform the data to a higher dimension so hopefully the data will be linearly separable. Data points of one class can be mapped using mathematical functions called kernels and the mapped data points allow the MSVM model to find the optimal line to separate the classes. Different kernel types can be used and gamma and cost arguments can be varied where gamma represents the argument of the kernel function and cost specifies the cost of a violation to the margin. Experimenting with these values helps to find the best classification accuracy.
       </p>
+    </div>
     </section>
 
-     <section class="main-content">
+      <section>
+      <div class="main-content">
       <h2>
         Results
         <a id="Results" class="anchor" href="#creating-pages-manually" aria-hidden="true">
@@ -133,23 +163,27 @@
         </a>
       </h2>
       <p>
-        Results
+        Overall we determined this model was best out of all of the studies we ran because of this reason........ maybe make a list of best to worst studies etc based on accuracy. Another report made a bar graph comparing studies and accuracy for all different methods.
       </p>
+      </div>
     </section>
 
-    <section class="main-content">
+     <section>
+      <div class="main-content">
       <h2>
         Discussion
-        <a id="Results" class="anchor" href="#creating-pages-manually" aria-hidden="true">
+        <a id="Discussion" class="anchor" href="#creating-pages-manually" aria-hidden="true">
           <span aria-hidden="true" class="octicon octicon-link"></span>
         </a>
       </h2>
       <p>
         Discussion
       </p>
+    </div>
     </section>
 
-    <section class="main-content">
+     <section>
+      <div class="main-content">
       <h2>
         Authors and Contributors
         <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true">
@@ -159,9 +193,11 @@
       <p>
         Luka Derado, Benjamin Daghir, Erin McCaskey, Khang Vu (@),(@), (@)
       </p>
+    </div>
     </section>
 
-    <section class="main-content">
+     <section>
+      <div class="main-content">
       <h3>
         Support or Contact
         <a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true">
@@ -171,6 +207,7 @@
       <p>
         Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and weâ€™ll help you sort it out.
       </p>
+    </div>
     </section>
 
     <section class="main-content">

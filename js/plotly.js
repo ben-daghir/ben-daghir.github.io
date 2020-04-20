@@ -27,6 +27,20 @@ var loadData = function(path) {
     return data_dict
 }
 
+/**
+file.csv
+column1 | column2 | .....
+--------------------------
+1       | 2       |
+2       |  -332   |
+534     | 0.123   |
+output = loadData('file.csv')
+output = {
+    'column1': [1, 2, 534]
+    'column2': [2, -332, 0.123]
+}
+output['column1'] = [1, 2, 534]
+**/
 
 /**
 * * * Hidden Layer Study Plots * * *
@@ -80,3 +94,45 @@ var layout = {
 };
 
 Plotly.newPlot('hidden-layer-study', accuracy_traces, layout);
+
+
+/**
+* * * * Feature Visualization * * * *
+**/
+
+// Load the data
+data = loadData('data/feature_analysis/stratified_crop_data.csv')
+
+// Generate dimensional array
+
+dims = []
+for (var band in data) {
+    console.log(band)
+    console.log(data[band])
+    dims.push({
+        label: band,
+        values: data[band]
+    });
+}
+console.log(dims)
+
+var data = [{
+  type: 'parcoords',
+  pad: [80,80,80,80],
+  line: {
+    color: data['Crop ID'],
+    colorscale: [[0, 'red'],
+                 [0.5, 'green'],
+                 [1, 'blue'],
+                 [3, 'black'],
+                 [4, 'yellow'],
+                 [5, 'orange'],
+                 [6, 'purple']]
+  },
+
+  dimensions: dims
+}];
+
+var layout = {};
+
+Plotly.newPlot('feature-analysis-plot', data, layout);
