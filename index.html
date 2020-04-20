@@ -62,7 +62,7 @@
         <div id="image-k" class="image">
             <img src="images/k.png" class="image image-k"/>
             <span style="opacity: 0" class="image-caption">Bands 00, 01, 05 - 09, CLD <br>Invisible Spectrum, Cloud Data</span>
-            <span style="opacity: 0; top:-65px;" class="diagram-caption">All Imagine Bands<br>Input</span>
+            <span style="opacity: 0; top:-65px;" class="diagram-caption">All Image Spectral Bands<br>(Features)</span>
         </div>
         <div id="image-b" class="image">
             <img src="images/b.png" class="image image-b"/>
@@ -78,11 +78,11 @@
         </div>
         <div id="image-fids" class="image image-fids" style="opacity:0">
             <img src="images/fids.png" class="image"/>
-            <span style="opacity: 0" class="diagram-caption">Crop Labels<br>Output</span>
+            <span style="opacity: 0" class="diagram-caption">Field IDs<br>(Pre-Processing Data)</span>
         </div>
         <div id="image-labels" class="image image-labels" style="opacity:0">
             <img src="images/labels.png" class="image"/>
-            <span style="opacity: 0" class="diagram-caption">Crop Labels<br>Output</span>
+            <span style="opacity: 0" class="diagram-caption">Crop IDs<br>(Labels)</span>
         </div>
         <div id="floating-label" class="image floating-label">
           Scroll Over Me!
@@ -93,7 +93,7 @@
       </div>
       <div class="main-content">
         <p>
-          The tool below, known as a "paracoord plot", is extremely useful diplaying relationships between
+          The tool below, known as a Parallel Coordinate plot or "ParaCoord" plot, is extremely useful diplaying relationships between
           the each field's features (each spectral band reading) and respective label (Crop ID). This is a quick tutorial
           on how to effectively use the tool.<br><br>
           Each continuous color-coded line spanning left-to-right corresponds to a single data point. There are multiple y-axes,
@@ -112,6 +112,10 @@
           a filter set that shows only a single Crop ID. This is exactly what our Machine Learning models are trying to do in
           different ways!
         </p>
+      </div>
+      <div style="text-align:center;">
+        <button onclick="applyFilters(1)">Apply Example Filter</button>
+        <button onclick="applyFilters(0)">Remove All Filters</button>
       </div>
        <div style="max-width: 1200px; margin: auto;" id="feature-analysis-plot"></div>
     </section>

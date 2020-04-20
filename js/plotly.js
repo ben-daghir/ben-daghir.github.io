@@ -113,36 +113,58 @@ data = loadData('data/feature_analysis/stratified_crop_data.csv')
 
 // Generate dimensional array
 
+// Filter Example Constraints
+filters = [
+    [[0.0128, 0.04], [0.28, 0.32]],
+    [[0.0103, 0.05], [0.225, 0.325]],
+    [[0.05, 0.065], [0.25, 0.32]],
+    [],
+    [[0.0675, 0.1], [0.28, 0.30], [0.32, 0.37]],
+    [[0.2525, 0.31], [0.375, 0.445]],
+    [],
+    [],
+    [],
+    [[0.19, 0.225], [0.32, 0.4]],
+    [],
+    [],
+    [],
+]
+
 dims = []
+dims_filtered = []
+f = 0
 for (var band in data) {
-    console.log(band)
-    console.log(data[band])
     dims.push({
         label: band,
         values: data[band]
     });
+    dims_filtered.push({
+        label: band,
+        values: data[band],
+        constraintrange: filters[f]
+    });
+    f = f + 1;
 }
-console.log(dims)
 
 var data = [{
   type: 'parcoords',
   pad: [80,80,80,80],
   line: {
     color: data['Crop ID'],
-    colorscale: [[0, 'red'],
-                 [0.5, 'green'],
-                 [1, 'blue'],
-                 [3, 'black'],
-                 [4, 'yellow'],
-                 [5, 'orange'],
-                 [6, 'purple']]
   },
-
   dimensions: dims
 }];
 
+
 var layout = {};
 
+var applyFilters = function(apply) {
+    if (apply) {
+        data[0]['dimensions'] = dims_filtered
+    } else {
+        data[0]['dimensions'] = dims
+    }
+    Plotly.newPlot('feature-analysis-plot', data, layout);
+}
 
-Plotly.newPlot('feature-analysis-plot', data, layout);
-
+applyFilters(0);
