@@ -84,7 +84,7 @@ for (var i = 0; i < files.length; i++) {
 }
 
 var layout = {
-    title: 'Hidden Layer Study',
+    title: 'Effects of Hidden Layer Numbers on Accuracy',
     xaxis: {
         title: 'Epochs - Log Scale',
         type: 'log',
@@ -103,6 +103,112 @@ var layout = {
 
 Plotly.newPlot('hidden-layer-study', accuracy_traces, layout);
 
+/**
+*** Activation Study Plot - Softplus Out ***
+**/
+
+// Load the Data
+
+files = [
+    'data/MLP/activation_study/softplus-out/varied-epoch-exponential-sp_out.csv',
+    'data/MLP/activation_study/softplus-out/varied-epoch-hard_sigmoid-sp_out.csv',
+    'data/MLP/activation_study/softplus-out/varied-epoch-linear-sp_out.csv',
+    'data/MLP/activation_study/softplus-out/varied-epoch-relu-sp_out.csv',
+    'data/MLP/activation_study/softplus-out/varied-epoch-sigmoid-sp_out.csv',
+    'data/MLP/activation_study/softplus-out/varied-epoch-softmax-sp_out.csv',
+    'data/MLP/activation_study/softplus-out/varied-epoch-softplus-sp_out.csv',
+    'data/MLP/activation_study/softplus-out/varied-epoch-softsign-sp_out.csv',
+    'data/MLP/activation_study/softplus-out/varied-epoch-tanh-sp_out.csv'
+]
+
+activation_function = ['Exponential', 'Hard Sigmoid', 'Linear', 'RELU', 'Sigmoid', 'Softmax', 'Softplus', 'Softsign', 'Tanh']
+
+accuracy_traces = []
+for (var i = 0; i < files.length; i++) {
+    data = loadData(files[i])
+    var trace = {
+      x: data['epochs'],
+      y: data['accuracy'],
+      mode: 'lines+markers',
+      type: 'scatter',
+      name: activation_function[i] + ' Activation Function'
+    };
+    accuracy_traces.push(trace)
+}
+
+var layout = {
+    title: 'Effects of Activation Function on Accuracy (Softplus Out)',
+    xaxis: {
+        title: 'Epochs - Log Scale',
+        type: 'log',
+        autorange: true,
+        showline: true,
+        showgrid: true,
+        zeroline: false
+    },
+    yaxis: {
+        title: 'Accuracy',
+        showline: true,
+        showgrid: true,
+        zeroline: false
+    }
+};
+
+Plotly.newPlot('activation-function-study-softplus', accuracy_traces, layout);
+
+/**
+Activation Study Plot - Uniform Out
+**/
+
+
+// Load the Data
+
+files = [
+    'data/MLP/activation_study/uniform-out/varied-epoch-exponential.csv',
+    'data/MLP/activation_study/uniform-out/varied-epoch-hard_sigmoid.csv',
+    'data/MLP/activation_study/uniform-out/varied-epoch-linear.csv',
+    'data/MLP/activation_study/uniform-out/varied-epoch-relu.csv',
+    'data/MLP/activation_study/uniform-out/varied-epoch-sigmoid.csv',
+    'data/MLP/activation_study/uniform-out/varied-epoch-softmax.csv',
+    'data/MLP/activation_study/uniform-out/varied-epoch-softplus.csv',
+    'data/MLP/activation_study/uniform-out/varied-epoch-softsign.csv',
+    'data/MLP/activation_study/uniform-out/varied-epoch-tanh.csv'
+]
+
+activation_function = ['Exponential', 'Hard Sigmoid', 'Linear', 'RELU', 'Sigmoid', 'Softmax', 'Softplus', 'Softsign', 'Tanh']
+
+accuracy_traces = []
+for (var i = 0; i < files.length; i++) {
+    data = loadData(files[i])
+    var trace = {
+      x: data['epochs'],
+      y: data['accuracy'],
+      mode: 'lines+markers',
+      type: 'scatter',
+      name: activation_function[i] + ' Activation Function'
+    };
+    accuracy_traces.push(trace)
+}
+
+var layout = {
+    title: 'Effects of Activation Function on Accuracy (Uniform Out)',
+    xaxis: {
+        title: 'Epochs - Log Scale',
+        type: 'log',
+        autorange: true,
+        showline: true,
+        showgrid: true,
+        zeroline: false
+    },
+    yaxis: {
+        title: 'Accuracy',
+        showline: true,
+        showgrid: true,
+        zeroline: false
+    }
+};
+
+Plotly.newPlot('activation-function-study-uniform', accuracy_traces, layout);
 
 /**
 * * * * Feature Visualization * * * *
@@ -168,3 +274,186 @@ var applyFilters = function(apply) {
 }
 
 applyFilters(0);
+
+/**
+//SVM Plot
+**/
+
+//Accuracy Plot
+data = loadData('data/RGBStudyResults.csv')
+
+accuracy_traces = []
+    var trace = {
+      x: data['Proportional Size'],
+      y: data['Avg All-Band Accuracy'],
+      mode: 'lines+markers',
+      type: 'scatter',
+      name: 'Average of All-Bands'
+    };
+    accuracy_traces.push(trace)
+
+var trace = {
+      x: data['Proportional Size'],
+      y: data['Avg RGB Accuracy'],
+      mode: 'lines+markers',
+      type: 'scatter',
+      name: 'Average of RGB Bands'
+    };
+    accuracy_traces.push(trace)
+
+
+var layout = {
+    title: 'Effects of Bands on Accuracy',
+    xaxis: {
+        title: 'Percentage of Available Training Data',
+        showline: true,
+        showgrid: true,
+        zeroline: false
+    },
+    yaxis: {
+        title: 'Accuracy',
+        showline: true,
+        showgrid: true,
+        zeroline: false
+    }
+};
+
+Plotly.newPlot('RGB-Band-Studies', accuracy_traces, layout);
+
+//Time Plot
+data = loadData('data/RGBStudyResults.csv')
+
+accuracy_traces = []
+    var trace = {
+      x: data['Proportional Size'],
+      y: data['Avg All-Band Times (seconds)'],
+      mode: 'lines+markers',
+      type: 'scatter',
+      name: 'Average Time of All-Bands'
+    };
+    accuracy_traces.push(trace)
+
+var trace = {
+      x: data['Proportional Size'],
+      y: data['Avg RGB Times (seconds)'],
+      mode: 'lines+markers',
+      type: 'scatter',
+      name: 'Average Time of RGB Bands'
+    };
+    accuracy_traces.push(trace)
+
+
+var layout = {
+    title: 'Effects of Bands on Training Times',
+    xaxis: {
+        title: 'Percentage of Available Training Data',
+        showline: true,
+        showgrid: true,
+        zeroline: false
+    },
+    yaxis: {
+        title: 'Average Time Spent Training',
+        showline: true,
+        showgrid: true,
+        zeroline: false
+    }
+};
+
+Plotly.newPlot('RGB-Band-Studies-Time', accuracy_traces, layout);
+
+/**
+Summary Plot
+**/
+
+files = [
+    'data/MLP/activation_study/softplus-out/varied-epoch-exponential-sp_out.csv',
+    'data/MLP/activation_study/softplus-out/varied-epoch-hard_sigmoid-sp_out.csv',
+    'data/MLP/activation_study/softplus-out/varied-epoch-linear-sp_out.csv',
+    'data/MLP/activation_study/softplus-out/varied-epoch-relu-sp_out.csv',
+    'data/MLP/activation_study/softplus-out/varied-epoch-sigmoid-sp_out.csv',
+    'data/MLP/activation_study/softplus-out/varied-epoch-softmax-sp_out.csv',
+    'data/MLP/activation_study/softplus-out/varied-epoch-softplus-sp_out.csv',
+    'data/MLP/activation_study/softplus-out/varied-epoch-softsign-sp_out.csv',
+    'data/MLP/activation_study/softplus-out/varied-epoch-tanh-sp_out.csv',
+    'data/MLP/activation_study/uniform-out/varied-epoch-exponential.csv',
+    'data/MLP/activation_study/uniform-out/varied-epoch-hard_sigmoid.csv',
+    'data/MLP/activation_study/uniform-out/varied-epoch-linear.csv',
+    'data/MLP/activation_study/uniform-out/varied-epoch-relu.csv',
+    'data/MLP/activation_study/uniform-out/varied-epoch-sigmoid.csv',
+    'data/MLP/activation_study/uniform-out/varied-epoch-softmax.csv',
+    'data/MLP/activation_study/uniform-out/varied-epoch-softplus.csv',
+    'data/MLP/activation_study/uniform-out/varied-epoch-softsign.csv',
+    'data/MLP/activation_study/uniform-out/varied-epoch-tanh.csv',
+    'data/MLP/hiddenlayer_study/varied-epoch-0HL.csv',
+    'data/MLP/hiddenlayer_study/varied-epoch-1HL.csv',
+    'data/MLP/hiddenlayer_study/varied-epoch-2HL.csv',
+    'data/MLP/hiddenlayer_study/varied-epoch-3HL.csv',
+    'data/MLP/hiddenlayer_study/varied-epoch-4HL.csv',
+    'data/MLP/hiddenlayer_study/varied-epoch-5HL.csv',
+    'data/MLP/hiddenlayer_study/varied-epoch-10HL.csv',
+    'data/MLP/hiddenlayer_study/varied-epoch-25HL.csv',
+    'data/MLP/hiddenlayer_study/varied-epoch-50HL.csv',
+    'data/MLP/hiddenlayer_study/varied-epoch-100HL.csv'
+]
+
+methods = ['exponential-sp_out',
+    'hard_sigmoid-sp_out',
+    'linear-sp_out',
+    'relu-sp_out',
+    'sigmoid-sp_out',
+    'softmax-sp_out',
+    'softplus-sp_out',
+    'softsign-sp_out',
+    'tanh-sp_out',
+    'exponential',
+    'hard_sigmoid',
+    'linear',
+    'relu',
+    'sigmoid',
+    'softmax',
+    'softplus',
+    'softsign',
+    'tanh',
+    '0HL',
+    '1HL',
+    '2HL',
+    '3HL',
+    '4HL',
+    '5HL',
+    '10HL',
+    '25HL',
+    '50HL',
+    '100HL.',
+    ]
+
+accuracy_loop = []
+for (var i = 0; i < files.length; i++) {
+    data = loadData(files[i])
+    var trace = {
+      x: methods[i] + data['epochs'][i],
+      y: data['accuracy'],
+      type: 'bar',
+      name: methods[i] + '' + data['epochs'][i]
+    };
+    accuracy_loop.push(trace)
+}
+
+
+var layout = {
+    title: 'Study Methods Affect on Accuracy',
+    xaxis: {
+        title: 'Method',
+        showline: true,
+        showgrid: true,
+        zeroline: false
+    },
+    yaxis: {
+        title: 'Accuracy',
+        showline: true,
+        showgrid: true,
+        zeroline: false
+    },
+    ascending: true
+};
+
+Plotly.newPlot('All-Studies-Accuracy', accuracy_loop, layout);
