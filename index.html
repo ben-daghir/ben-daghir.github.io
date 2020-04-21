@@ -55,7 +55,7 @@
           probability for each pixel. Images are taken every month within the growing cycle and multiple fields can be
           present in one image which results in some fields only being a few pixels wide. We used 3286 images for training
           our models and 1402 images were provided for testing. Our project will attempt to correctly classify the results
-          into the 7 â€˜crop idsâ€™ provided by the dataset with the highest accuracy possible.
+          into the 7 Crop IDs provided by the dataset with the highest accuracy possible.
         </p>
       </div>
 
@@ -129,9 +129,9 @@
         </a></h3>
         <p>
           For our training and testing dataset, we used the images provided with a known Field ID. We randomly chose
-          80% of stratified image samples to train our model, leaving 20% left to train the model. This comes out to
+          80% of stratified image samples to train our model, leaving 20% left to test the model. This comes out to
           roughly 38,000  data points to train <span lang="latex">(N_{train})</span> and 9,500 data points to test
-          <span lang="latex">(N_{test})</span>.All of the images
+          <span lang="latex">(N_{test})</span>. All of the images
           and label arrays are sized to be 2016 × 3035 pixels. The amount of data points within each image
           varies depending on satellite image. View <a href="#image-visualizer">here</a> to see how each image is broken
           down into its features and components.<br><br>
@@ -140,7 +140,7 @@
           in the image. The size of the input and label arrays <span lang="latex">(X, y)</span> are<br><br>
           <div style="margin:auto; max-width: 330px;">
             <div style="text-align:center;">
-              <span lang="latex"> X \in \mathbb{R}^{N \times B \times D}</span><br><br>
+              <span lang="latex"> X \in \mathbb{R}^{N \times B \times D}</span><br>
               <span lang="latex"> y \in \mathbb{R}^{N}</span><br><br>
             </div>
             <span lang="latex">N = \text{Number of Data Points}</span><br>
@@ -149,7 +149,7 @@
           </div>
           Most Machine Learning Models cannot ingest higher dimensional arrays, so the first step before inputting the data
           is to flatten in. The process of flattening takes each multi-dimensional index and moves it into a single dimensional array.
-          This mapping from 3-dimensions to one dimension looks like this mathematically,<br><br>
+          This mapping from 3-dimensions to 1-dimension looks like this mathematically,<br><br>
           <div style="text-align:center;">
             <span lang="latex">f: (n, b, d) \rightarrow (i) = n \cdot b \cdot d</span><br><br>
           </div>
@@ -158,7 +158,7 @@
             <span lang="latex">X_{train} \subset \mathbb{R}^{\sim 6422000}</span><br>
             <span lang="latex">X_{test} \subset \mathbb{R}^{\sim 1605500}</span><br><br>
           </div>
-          The labels for classification <span lang="latext">y</span>, is simply a column vector of length
+          The labels for classification <span lang="latex">(y)</span>, is simply a column vector of length
           <span lang="latext">N</span>.<br><br>
           <div style="text-align:center;">
             <span lang="latex">y_{train} \subset \mathbb{R}^{\sim 38000}</span><br>

@@ -252,7 +252,7 @@ for (var band in data) {
     f = f + 1;
 }
 
-var data = [{
+var paracoord_data = [{
   type: 'parcoords',
   pad: [80,80,80,80],
   line: {
@@ -266,11 +266,11 @@ var layout = {};
 
 var applyFilters = function(apply) {
     if (apply) {
-        data[0]['dimensions'] = dims_filtered
+        paracoord_data[0]['dimensions'] = dims_filtered
     } else {
-        data[0]['dimensions'] = dims
+        paracoord_data[0]['dimensions'] = dims
     }
-    Plotly.newPlot('feature-analysis-plot', data, layout);
+    Plotly.newPlot('feature-analysis-plot', paracoord_data, layout);
 }
 
 applyFilters(0);
