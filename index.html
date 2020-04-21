@@ -181,13 +181,13 @@
           probability that crop X was in that field id.
         </p>
         <p>
-        We performed two different studies using the MLP model. The first was an activation study which tested how
+          We performed two different studies using the MLP model. The first was an activation study which tested how
           the loss and accuracy changed from using different activation functions for different epoch values. We also
           performed a hidden layer study in which we varied the number of hidden layers used. For both of these studies
           we utilized the functions built in to the Keras API.
         </p>
 
-        <h4>Activation Function Study Results:</h4>
+        <h4>Activation Function Study:</h4>
         <p> For this study we varied activation functions for different epoch values. One epoch is when the entire
           dataset is passed forward and backward through the neural network. As the number of epochs are increased
           the weights are changed in the neural network nore and the model will change from underfitting the data
@@ -197,7 +197,11 @@
           function varies between datasets which is why we also varied the activation functions used for this study.
           We recorded losses and accuracy to determine the optimal epoch value and activation function for our dataset.
         </p>
-        <h4>Hidden Layer Study Results:</h4>
+
+        <div style="max-width: 1200px; margin: auto;" id="activation-function-study-softplus"></div>
+        <div style="max-width: 1200px; margin: auto;" id="activation-function-study-uniform"></div>
+
+        <h4>Hidden Layer Study:</h4>
         <p>For our hidden layer study we also varied the number of epochs for the reason explained in the previous
           section. For this study we also varied the number of hidden layers. A single-layer artificial neural
           network has a single layer of nodes and each node connects directly to an input variable and then contributes
@@ -210,9 +214,10 @@
 
         <div style="max-width: 1200px; margin: auto;" id="hidden-layer-study"></div>
 
-        <h4>Comparison Between Both Studies:</h4>
-        <p>When comparing our activation study and our hidden layer study, the --- study provided more accuracy in
-          predicting the correct crop ID. </p>
+        <h4>ANN Model Results:</h4>
+        <p>When comparing our activation studies and our hidden layer studies
+          .....................
+        </p>
       </div>
     </section>
 
@@ -239,6 +244,26 @@
         the cost of a violation to the margin. Experimenting with these values helps to find the best classification
         accuracy.
       </p>
+      <h4>Methodology</h4>
+      <p>
+        In our case, we used Scikit learning’s implementation of the MSVC, which provides 3 options for built in Kernels (Linear, Polynomial and Radial Basis Function). We went with Radial Basis Functions, which has two parameters, gamma and C, that influence the shape of the decision boundary. Gamma describes how ‘curvy’ our decision boundary will be. The lower the boundary, the closer it is to a straight line. The higher, the more the distance to a labelled point determines the decision boundary. C describes the softness of decision boundary. Closer to zero indicates a decision boundary more tolerant of error, and the greater C the less tolerant or error the boundary becomes. From here, we create a small selection of possible gamma and C values and used a grid search algorithm to find the best possible hyperparameters.
+      </p>
+      <p>
+        Using this methodology, we began to test training our model with the entirety of our dataset. Our goal at the outset was to reach an accuracy of 80%. Our immediate realization is that the time cost was so large, that we wanted to test to see how taking smaller samples of the data would impact our result. We decided to take records of accuracy and time spent on these smaller samples and record their performance.
+      </p>
+      <p>
+        For our experiment, we took 30 samples of random partitions of the data such that each data point had a Possibility ‘P’ of being included in the training. So if P = 0.1, on average ten percent of training data was fit before testing.
+        In addition, we came to this with some background understanding that plant chlorophyll drops significantly outside of a sweet spot within the visible light spectrum. Thus, we believed that the removal of data representing electromagnetic wavelengths outside the spectrum would not impact accuracy.
+      </p>
+      <h4>MSVM Study Results</h4>
+       <div style="max-width: 1200px; margin: auto;" id="RGB-Band-Studies"></div>
+      <div style="max-width: 1200px; margin: auto;" id="RGB-Band-Studies-Time"></div>
+      <p>
+        As you can see in the following graphs, the accuracy increases consistently as the amount of training data used approaches 100%. Accuracy at 0.9 exceeds 80%, our threshold for satisfaction. We can also see that this threshold is reached by smaller subsets of the data. Most interestingly, we see that we can arrive at the 80% accuracy using only the bands of electromagnetic spectrum within the visible light spectrum, and 80% of our training data. The time taken to get to this result was approximately 35% of the cost of our most expensive observation, 90% of training data across all bands.
+      </p>
+      <p>
+        The loss of accuracy when dropping all electromagnetic bands outside of the visible spectrum never exceeded 5 percent, but more than halved the time taken to train the SVM model (except in the smallest proportion of data 10%) This has important applications, because it reveals a way we can optimize our collection of data in the future. For example, if our analysis is time sensitive, we can reduce our training time ~50% by reducing features to RGB, and still expect results of at least 80% accuracy.
+      </p>
     </div>
     </section>
 
@@ -250,11 +275,12 @@
           <span aria-hidden="true" class="octicon octicon-link"></span>
         </a>
       </h2>
+       <div style="max-width: 1200px; margin: auto;" id="All-Studies-Accuracy"></div>
       <p>
-        Overall we determined this model was best out of all of the studies we ran because of this reason........
-        maybe make a list of best to worst studies etc based on accuracy. Another report made a bar graph comparing
-        studies and accuracy for all different methods.
+        When comparing the MSVM Model to the Neural Networks from earlier, we see that accuracy is comparable between the two methods, with a slight edge for the Neural Network in the end. The Neural Network predictions were 93% for the final model, compared to 90% in the all data case for MCSVM. This shows that Neural Networks perform slightly better than our implementation for multi-classification support vector machines.
+
       </p>
+
       </div>
     </section>
 
