@@ -305,7 +305,7 @@ var trace = {
 var layout = {
     title: 'Effects of Bands on Accuracy',
     xaxis: {
-        title: 'Percentage of Available Training Data',
+        title: 'Percentage of Available Training Data Used in Model Training',
         showline: true,
         showgrid: true,
         zeroline: false
@@ -346,13 +346,13 @@ var trace = {
 var layout = {
     title: 'Effects of Bands on Training Times',
     xaxis: {
-        title: 'Percentage of Available Training Data',
+        title: 'Percentage of Available Training Data Used in Model Training',
         showline: true,
         showgrid: true,
         zeroline: false
     },
     yaxis: {
-        title: 'Average Time Spent Training',
+        title: 'Average Time Spent Training, (sec)',
         showline: true,
         showgrid: true,
         zeroline: false
@@ -476,4 +476,12 @@ var confusion_data = [
   }
 ];
 
-Plotly.newPlot('confusion-matrix', confusion_data);
+var layout = {
+    title: 'Confusion Matrix for the 7 Crop ID\'s (0 - 6)',
+    yaxis: {
+        autorange: 'reversed'
+    },
+    ascending: true
+};
+
+Plotly.newPlot('confusion-matrix', confusion_data, layout);

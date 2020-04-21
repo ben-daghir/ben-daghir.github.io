@@ -245,8 +245,9 @@
         <p>
           <ol>
         <li><span style="font-weight: bold;">If only the visible spectrum bands are used, then the model will improve in accuracy.</span><br>
-          <p>Due to the biology of plant species, studies have show that plants emit and absorb most light in the
-          visible spectrum. Therefore, according to information theory, there is more entropy in those spectrums.
+          <p>Due to the biology of plant species, studies have show that plants emit and absorb the most light in the
+          visible spectrum. Therefore, according to information theory, there is more entropy in those spectra. As a general rule of thumb,
+          it is important to have many more data points than features when training an ANN.
           </p>
         </li>
         <li><span style="font-weight: bold;">If the epochs used in the ANN are increased to above 500, then the model will begin to decrease in accuracy.</span><br>
@@ -261,7 +262,6 @@
         </li>
         </ol>
         </p>
-
     </div>
     </section>
 
@@ -406,6 +406,28 @@
       </h2>
       <p>
         Discussion
+      </p>
+      <h4>Hypothesis Conclusions</h4>
+      <p>
+        <ol>
+      <li><span style="font-weight: bold;">If only the visible spectrum bands are used, then the model will improve in accuracy.</span><br>
+        <p>The data suggests that this is <span style="font-weight: bold;">false</span>. We see better model performance for both
+        the ANN and the MSVM when we include all avaiable frequency spectra. This is curious, because we were expecting the
+        model to become "confused" or overfitted with too many features. But we see that we have enough data points to have 13 features.
+      </p>
+      </li>
+      <li><span style="font-weight: bold;">If the epochs used in the ANN are increased to above 500, then the model will begin to decrease in accuracy.</span><br>
+        <p>The data suggests that this is <span style="font-weight: bold;">false</span>. We ran up to 1000 epochs for the ANN model
+          and found that the accuracy continues to increase past 500 epochs. This is a little surprising, as we expected to see the
+          model over-fit the training data. What this means is that we have enough data to run many more epochs. We would need to run
+          potentially thousands more epochs in order to see the over-fitting phenomenon.
+        </p>
+      </li>
+       <li><span style="font-weight: bold;">I need one more hypothesis to make this section worth it.</span><br>
+        <p>
+        </p>
+      </li>
+      </ol>
       </p>
     </div>
     </section>
