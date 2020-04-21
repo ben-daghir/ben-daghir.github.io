@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Machine Learning for Satellite Crop Classification</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="css/normalize.css" media="screen">
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen">
@@ -44,12 +45,13 @@
       <div class="main-content">
 
         <h2>
-          Data
+          The Data
           <a id="Data" class="anchor" href="#designer-templates" aria-hidden="true">
           <span aria-hidden="true" class="octicon octicon-link"></span></a>
         </h2>
         <p>
-          The dataset we used for our project comes from the Radiant Earth MLHub and was accessed via a RESTful API.
+          The dataset we used for our project comes from the <a target="_blank" href="http://docs.mlhub.earth/#radiant-mlhub-api>">
+          Radiant Earth MLHub</a> and was accessed via a RESTful API.
           The dataset contains over four thousand time-series raster images of farmland fields taken by a Sentinel-2
           satellite. The images taken consist of 12 separate frequency spectrum imaging bands and cloud interference
           probability for each pixel. Images are taken every month within the growing cycle and multiple fields can be
@@ -92,6 +94,54 @@
             <div id="scroll-anchor" class="anchor"></div>
         </div>
       </div>
+      <div class="main-content">
+        <p>
+          Below is a table indicating the Crop IDs and their corresponding Crop Type.
+        </p>
+        <table class="w3-hoverable" style="width:max-content; text-align:center; margin:auto;">
+          <tr class="w3-green">
+            <th>Crop ID</th>
+            <th>Crop Type</th>
+            <th>Number of Fields</th>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>Maize</td>
+            <td>1462</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Cassava</td>
+            <td>829</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Common Bean</td>
+            <td>98</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Maize & Common Bean (intercropping)</td>
+            <td>487</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Maize & Cassava (intercropping)</td>
+            <td>172</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Maize & Soybean (intercropping)</td>
+            <td>160</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Cassava & Common Bean (intercropping)</td>
+            <td>78</td>
+          </tr>
+        </table>
+      </div>
+
       <div class="main-content">
         <p>
           The tool below, known as a Parallel Coordinate plot or "ParaCoord" plot, is extremely useful diplaying relationships between
@@ -294,9 +344,18 @@
         As you can see in the following graphs, the accuracy increases consistently as the amount of training data used approaches 100%. Accuracy at 0.9 exceeds 80%, our threshold for satisfaction. We can also see that this threshold is reached by smaller subsets of the data. Most interestingly, we see that we can arrive at the 80% accuracy using only the bands of electromagnetic spectrum within the visible light spectrum, and 80% of our training data. The time taken to get to this result was approximately 35% of the cost of our most expensive observation, 90% of training data across all bands.
       </p>
       <p>
-        The loss of accuracy when dropping all electromagnetic bands outside of the visible spectrum never exceeded 5 percent, but more than halved the time taken to train the SVM model (except in the smallest proportion of data 10%) This has important applications, because it reveals a way we can optimize our collection of data in the future. For example, if our analysis is time sensitive, we can reduce our training time ~50% by reducing features to RGB, and still expect results of at least 80% accuracy.
+        The loss of accuracy when dropping all electromagnetic bands outside of the visible spectrum never exceeded 5
+        percent, but more than halved the time taken to train the SVM model (except in the smallest proportion of data
+        10%) This has important applications, because it reveals a way we can optimize our collection of data in the
+        future. For example, if our analysis is time sensitive, we can reduce our training time ~50% by reducing features
+        to RGB, and still expect results of at least 80% accuracy.
       </p>
-    </div>
+      <h4>Confusion Matrix </h4>
+      <p>
+        ... fill in later
+      </p>
+      <div id="confusion-matrix"></div>
+      </div>
     </section>
 
       <section>

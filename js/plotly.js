@@ -457,3 +457,23 @@ var layout = {
 };
 
 Plotly.newPlot('All-Studies-Accuracy', accuracy_loop, layout);
+
+/**
+* * * Confusion Matrix * * *
+**/
+
+data = loadData('data/confusion_matrix.csv');
+
+var confusion_array = []
+for (var key in data) {
+    confusion_array.push(data[key])
+}
+
+var confusion_data = [
+  {
+    z: confusion_array,
+    type: 'heatmap'
+  }
+];
+
+Plotly.newPlot('confusion-matrix', confusion_data);
