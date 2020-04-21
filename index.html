@@ -13,6 +13,7 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="js/jquery.csv.min.js"></script>
     <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </head>
   <body>
     <section class="page-header">
@@ -95,23 +96,31 @@
       <div class="main-content">
         <p>
           The tool below, known as a Parallel Coordinate plot or "ParaCoord" plot, is extremely useful diplaying relationships between
-          the each field's features (each spectral band reading) and respective label (Crop ID). This is a quick tutorial
+          the each field's features (each spectral band reading) and respective label (Crop ID). Below is a quick tutorial
           on how to effectively use the tool.<br><br>
-          Each continuous color-coded line spanning left-to-right corresponds to a single data point. There are multiple y-axes,
-          13 to be exact, labeled at the top as either a spectral band (feature) or the data point's Crop ID (label).
-          The data points with the same Crop ID (label) are the same color. The location on the y-axis where a data
-          point's line crosses corresponds to its value for that given feature. This is where the tool becomes extremely
-          powerful.<br><br>
-          The tool allows us to create bypass filters to look at specific ranges for each feature or label. Every data
-          point satisfying the filter range will be highlighted and the rest will be muted. For example, to look at
-          data points with only Crop ID 4, click and drag directly on the Crop ID y-axis so that a filter is created
-          over the value 4.<br><br>
-          As you will see, only the lines corresponding to Crop ID 4 will be shown. This filter can be moved by
-          dragging it up or down. You can very easily chain filters by clicking and dragging on different feature axes,
-          creating a set of feature ranges. You can also add more than one filter per axis!<br><br>
-          To remove all filters on an axis, just click the axis once, without dragging. That's it! See if you can create
-          a filter set that shows only a single Crop ID. This is exactly what our Machine Learning models are trying to do in
-          different ways!
+          <div class="wrap-collabsible">
+            <input id="collapsible" class="toggle" type="checkbox">
+            <label for="collapsible" class="lbl-toggle">Tutorial</label>
+            <div class="collapsible-content">
+              <div class="content-inner">
+                Each continuous color-coded line spanning left-to-right corresponds to a single data point. There are multiple y-axes,
+                13 to be exact, labeled at the top as either a spectral band (feature) or the data point's Crop ID (label).
+                The data points with the same Crop ID (label) are the same color. The location on the y-axis where a data
+                point's line crosses corresponds to its value for that given feature. This is where the tool becomes extremely
+                powerful.<br><br>
+                The tool allows us to create bypass filters to look at specific ranges for each feature or label. Every data
+                point satisfying the filter range will be highlighted and the rest will be muted. For example, to look at
+                data points with only Crop ID 4, click and drag directly on the Crop ID y-axis so that a filter is created
+                over the value 4.<br><br>
+                As you will see, only the lines corresponding to Crop ID 4 will be shown. This filter can be moved by
+                dragging it up or down. You can very easily chain filters by clicking and dragging on different feature axes,
+                creating a set of feature ranges. You can also add more than one filter per axis!<br><br>
+                To remove all filters on an axis, just click the axis once, without dragging. That's it! See if you can create
+                a filter set that shows only a single Crop ID. This is exactly what our Machine Learning models are trying to do in
+                different ways!
+              </div>
+            </div>
+          </div>
         </p>
       </div>
       <div style="text-align:center;">
