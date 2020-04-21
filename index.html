@@ -12,6 +12,7 @@
     <script src="js/jquery.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="js/jquery.csv.min.js"></script>
+    <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
   </head>
   <body>
     <section class="page-header">
@@ -129,17 +130,40 @@
         <p>
           For our training and testing dataset, we used the images provided with a known Field ID. We randomly chose
           80% of stratified image samples to train our model, leaving 20% left to train the model. This comes out to
-          roughly 3500 data points to train and 875 data points to test. All of the images
+          roughly 38,000  data points to train <span lang="latex">(N_{train})</span> and 9,500 data points to test
+          <span lang="latex">(N_{test})</span>.All of the images
           and label arrays are sized to be 2016 × 3035 pixels. The amount of data points within each image
           varies depending on satellite image. View <a href="#image-visualizer">here</a> to see how each image is broken
           down into its features and components.<br><br>
-          For our Machine Learning Models, the feature data (X) is most easily broken down into a 3-dimnesional array.
+          For our Machine Learning Models, the feature data <span lang="latex">(X)</span> is most easily broken down into a 3-dimnesional array.
           Because the data is a time-series, there are repetitive data points corresponding to the same field location
-          in the image. The size of the input array (X) is naturally (N x B x D):<br><br>
-          N = Number of Data Points<br>
-          B = Number of Spectral Bands<br>
-          D = Number of Dates in the Time Series<br><br>
-          As most array cannot naturally ingest multiple dimensions,
+          in the image. The size of the input and label arrays <span lang="latex">(X, y)</span> are<br><br>
+          <div style="margin:auto; max-width: 330px;">
+            <div style="text-align:center;">
+              <span lang="latex"> X \in \mathbb{R}^{N \times B \times D}</span><br><br>
+              <span lang="latex"> y \in \mathbb{R}^{N}</span><br><br>
+            </div>
+            <span lang="latex">N = \text{Number of Data Points}</span><br>
+            <span lang="latex">B = \text{Number of Spectral Bands}</span><br>
+            <span lang="latex">D = \text{Number of Dates in the Time Series}</span><br><br>
+          </div>
+          Most Machine Learning Models cannot ingest higher dimensional arrays, so the first step before inputting the data
+          is to flatten in. The process of flattening takes each multi-dimensional index and moves it into a single dimensional array.
+          This mapping from 3-dimensions to one dimension looks like this mathematically,<br><br>
+          <div style="text-align:center;">
+            <span lang="latex">f: (n, b, d) \rightarrow (i) = n \cdot b \cdot d</span><br><br>
+          </div>
+          The flattened training and testing feature arrays with then have the following shape,<br><br>
+          <div style="text-align:center;">
+            <span lang="latex">X_{train} \subset \mathbb{R}^{\sim 6422000}</span><br>
+            <span lang="latex">X_{test} \subset \mathbb{R}^{\sim 1605500}</span><br><br>
+          </div>
+          The labels for classification <span lang="latext">y</span>, is simply a column vector of length
+          <span lang="latext">N</span>.<br><br>
+          <div style="text-align:center;">
+            <span lang="latex">y_{train} \subset \mathbb{R}^{\sim 38000}</span><br>
+            <span lang="latex">y_{test} \subset \mathbb{R}^{\sim 9500}</span><br><br>
+          </div>
         </p>
     </div>
     </section>
