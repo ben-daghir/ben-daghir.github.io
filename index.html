@@ -58,10 +58,10 @@
         </p>
       </div>
 
-      <div class="container">
+      <div id="image-visualizer" class="container">
         <div id="image-k" class="image">
             <img src="images/k.png" class="image image-k"/>
-            <span style="opacity: 0" class="image-caption">Bands 00, 01, 05 - 09, CLD <br>Invisible Spectrum, Cloud Data</span>
+            <span style="opacity: 0" class="image-caption">Bands 01, 05 - 09, CLD <br>Invisible Spectrum, Cloud Data</span>
             <span style="opacity: 0; top:-65px;" class="diagram-caption">All Image Spectral Bands<br>(Features)</span>
         </div>
         <div id="image-b" class="image">
@@ -126,16 +126,23 @@
         <a id="Training-testing-dataset" class="anchor" href="#creating-pages-manually" aria-hidden="true">
           <span aria-hidden="true" class="octicon octicon-link"></span>
         </a></h3>
-        <p>For our training and testing dataset, we used the images provided with a known field ID. We randomly chose
-          80% of the images to use to train our model, with the remaining 20% left to train the model. All of the images
-          were already sized to be the same. However, to feed the images into the network we needed to flatten the
-          training data (N, C, H, W) to be in the shape of (N, C X H X W). For each study we computed the loss and
-          accuracy to compare between studies. **NOT SURE HOW DATA WAS MANIPULATED - THIS WILL NEED CHANGED ***
+        <p>
+          For our training and testing dataset, we used the images provided with a known Field ID. We randomly chose
+          80% of stratified image samples to train our model, leaving 20% left to train the model. This comes out to
+          roughly 3500 data points to train and 875 data points to test. All of the images
+          and label arrays are sized to be 2016 × 3035 pixels. The amount of data points within each image
+          varies depending on satellite image. View <a href="#image-visualizer">here</a> to see how each image is broken
+          down into its features and components.<br><br>
+          For our Machine Learning Models, the feature data (X) is most easily broken down into a 3-dimnesional array.
+          Because the data is a time-series, there are repetitive data points corresponding to the same field location
+          in the image. The size of the input array (X) is naturally (N x B x D):<br><br>
+          N = Number of Data Points<br>
+          B = Number of Spectral Bands<br>
+          D = Number of Dates in the Time Series<br><br>
+          As most array cannot naturally ingest multiple dimensions,
         </p>
     </div>
     </section>
-
-
      <section>
       <div class="main-content">
 
