@@ -321,12 +321,34 @@
 
         <div style="max-width: 1200px; margin: auto;" id="hidden-layer-study"></div>
 
-        <h4>ANN Model Results:</h4>
+        <h4>Batch Size Study:</h4>
+        <p>Using an epoch of 250, we vary the batch size used to train our neural network using our. As expected, we
+            find that higher batch sizes leads to more inaccurate data than lower batch sizes. However, lowering the
+            batch size does not always decrease accuracy as we can see that accuracy begins to decrease when our batch
+            size is smaller than 32. From our study, the optimal batch size is 32. This study is important because it
+            allows us to find the optimal batch size that is a trade off between accuracy and execution time.
+        </p>
         <div style="max-width: 1200px; margin: auto;" id="Batch_size"></div>
+
+        <h4>PCA Study:</h4>
+        <p>We tried to reduce the features of our datasets in order to improve accuracy and performance. Because each
+            pixel had twelve bands (not including CLD) and 13 time-series, the size of our feature was 156. We try to
+            further reduce with PCA, varying the number of PCA dimensions from 1 to 8. Running our model with an epoch
+            of 250, we find no significant changes in accuracy between the PCA datasets. We also do not see an execution
+            time change in PCA data. Therefore, we do not consider PCA impactful to our study. However, it might preserve
+            memory usage in our model.
+        </p>
         <div style="max-width: 1200px; margin: auto;" id="PCA_dims"></div>
+
+
+        <h4>ANN Model Results:</h4>
         <div style="max-width: 1200px; margin: auto;" id="epochs"></div>
-        <p>When comparing our activation studies and our hidden layer studies
-          .....................
+        <p>We borrow ideas from models commonly trained with the Fashion MNIST dataset.
+            We have an input layer that is flattened for every pixel (156 in size), and we utilize two hidden layers
+            activated with ReLu, connected to an output layer of size 7 for classification. While testing our
+            hyperparameters, we observe that the data in the cloud probability is vastly different from the data from
+            the other bands. Removing the cloud probability layer completely produced higher accuracy results, so we
+            removed it from our model.
         </p>
       </div>
     </section>
