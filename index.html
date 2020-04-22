@@ -256,10 +256,14 @@
             500 epochs.
           </p>
         </li>
-         <li><span style="font-weight: bold;">I need one more hypothesis to make this section worth it.</span><br>
-          <p>
-          </p>
-        </li>
+         <li><span style="font-weight: bold;">If both an ANN and a MSVM are implemented, then the ANN will outperform the MSVM with respect to accuracy.</span><br>
+        <p>
+            When the two approaches are compared, the Neural Network approach will beat out the Support Vector Machines.
+            We think this because Neural networks are turing complete, that is they can be fit to represent any
+            programmable function, whereas support vector machines have a performance cap dependent on their
+            hyper-parameters.
+        </p>
+      </li>
         </ol>
         </p>
     </div>
@@ -268,14 +272,14 @@
 
     <section>
       <div class="main-content">
-        <h3>
-          Artificial Neural Network (ANN): Multi-Layered Perceptron Model
+        <h2>
+          Artificial Neural Network (ANN):<br> Multi-Layered Perceptron Model
           <a id="ANN" class="anchor" href="#creating-pages-manually" aria-hidden="true">
             <span aria-hidden="true" class="octicon octicon-link"></span>
           </a>
-        </h3>
+        </h2>
         <p>
-        A Multi-Layered Perceptron (MLP) is a supervised learning algorithm that consists of an input, several hidden
+        A Multi-Layered Perceptron (MLP), is a supervised learning algorithm that consists of an input, several hidden
           layers, and an output later. Each hidden layer has nodes that use activation functions. MLP then uses
           backpropogation to train the network and update the nodes. We chose to use this approach because the MLP
           can capture more complex and non-linear features in the dataset. Our MLP Model will use the twelve spectrum
@@ -284,7 +288,7 @@
           probability that crop X was in that field id.
         </p>
         <p>
-          We performed two different studies using the MLP model. The first was an activation study which tested how
+          We performed two different studies using the ANN model. The first was an activation study which tested how
           the loss and accuracy changed from using different activation functions for different epoch values. We also
           performed a hidden layer study in which we varied the number of hidden layers used. For both of these studies
           we utilized the functions built in to the Keras API.
@@ -308,7 +312,7 @@
         <p>For our hidden layer study we also varied the number of epochs for the reason explained in the previous
           section. For this study we also varied the number of hidden layers. A single-layer artificial neural
           network has a single layer of nodes and each node connects directly to an input variable and then contributes
-          to an output variable. To create a multilayer perceptron a single layer netwrok is extended where it has an
+          to an output variable. To create a multilayer perceptron a single layer network is extended where it has an
           input layer that connects to the input variables, one or more hidden layers, and an output layer that produces
           the output variables. Because of the complexity of our dataset, a multi-layered model can be more accurate.
           To determine the optimal number of layers for our model, we need to experiment with different numbers of them
@@ -327,13 +331,13 @@
 
      <section>
       <div class="main-content">
-      <h3>
+      <h2>
         Multi-Class Support Vector Machines (MSVM) Model
 
         <a id="MSVM" class="anchor" href="#creating-pages-manually" aria-hidden="true">
           <span aria-hidden="true" class="octicon octicon-link"></span>
         </a>
-      </h3>
+      </h2>
       <p>
         We chose to test a multi-class support vector machine model because SVMs are often used for classification
         tasks and tend to perform well with many problem types. An SVM constructs hyperplanes in multidimensional
@@ -382,7 +386,7 @@
       <section>
       <div class="main-content">
       <h2>
-        Results
+        Overall Results
         <a id="Results" class="anchor" href="#creating-pages-manually" aria-hidden="true">
           <span aria-hidden="true" class="octicon octicon-link"></span>
         </a>
@@ -423,8 +427,9 @@
           potentially thousands more epochs in order to see the over-fitting phenomenon.
         </p>
       </li>
-       <li><span style="font-weight: bold;">I need one more hypothesis to make this section worth it.</span><br>
+       <li><span style="font-weight: bold;">If both an ANN and a MSVM are implemented, then the ANN will outperform the MSVM with respect to accuracy.</span><br>
         <p>
+
         </p>
       </li>
       </ol>
@@ -441,7 +446,7 @@
         </a>
       </h2>
       <p>
-        Luka Derado, Benjamin Daghir, Erin McCaskey, Khang Vu (@),(@), (@)
+        Luka Derado, Benjamin Daghir, Erin McCaskey, Khang Vu
       </p>
     </div>
     </section>
