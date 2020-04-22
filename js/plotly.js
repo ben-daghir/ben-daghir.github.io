@@ -459,6 +459,8 @@ var layout = {
 
 };
 
+console.log(accuracy_loop)
+
 Plotly.newPlot('All-Studies-Accuracy', accuracy_loop, layout);
 
 /**
