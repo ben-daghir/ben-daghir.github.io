@@ -469,7 +469,7 @@ data = loadData('data/MLP/final_mlp/acc_v_batch_size.csv')
 
 accuracy_traces = []
     var trace = {
-      x: data['size'],
+      x: data['batchsize'],
       y: data['accuracy'],
       mode: 'lines+markers',
       type: 'scatter',
@@ -503,7 +503,7 @@ data = loadData('data/MLP/final_mlp/acc_v_pca_dims.csv')
 
 accuracy_traces = []
 var trace = {
-      x: data['pca_size'],
+      x: data['pca_dims'],
       y: data['accuracy'],
       mode: 'lines+markers',
       type: 'scatter',
@@ -544,7 +544,7 @@ var trace = {
 
 
 var layout = {
-    title: 'Epoch Number Affect on Accuracy',
+    title: 'Final Model Accuracy with Epoch',
     xaxis: {
         title: 'Number of Epochs',
         showline: true,

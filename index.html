@@ -297,10 +297,10 @@
         <h4>Activation Function Study:</h4>
         <p> For this study we varied activation functions for different epoch values. One epoch is when the entire
           dataset is passed forward and backward through the neural network. As the number of epochs are increased
-          the weights are changed in the neural network nore and the model will change from underfitting the data
+          the weights are increasingly changed in the neural network and the model will change from under-fitting the data
           to becoming optimal and then overfitting which is why experimentation is needed for different datasets to
           determine the optimal epoch value. An activation function needs to be applied for a MLP model to allow the
-          network to represent non-linear complex functional mappings between inputs and outputs. The optimal activaton
+          network to represent non-linear complex functional mappings between inputs and outputs. The optimal activation
           function varies between datasets which is why we also varied the activation functions used for this study.
           We recorded losses and accuracy to determine the optimal epoch value and activation function for our dataset.
         </p>
@@ -341,7 +341,7 @@
         <div style="max-width: 1200px; margin: auto;" id="PCA_dims"></div>
 
 
-        <h4>ANN Model Results:</h4>
+        <h3>ANN Final Model Results:</h3>
         <div style="max-width: 1200px; margin: auto;" id="epochs"></div>
         <p>We borrow ideas from models commonly trained with the Fashion MNIST dataset.
             We have an input layer that is flattened for every pixel (156 in size), and we utilize two hidden layers
@@ -418,7 +418,10 @@
       </h2>
        <div style="max-width: 1200px; margin: auto;" id="All-Studies-Accuracy"></div>
       <p>
-        When comparing the MSVM Model to the Neural Networks from earlier, we see that accuracy is comparable between the two methods, with a slight edge for the Neural Network in the end. The Neural Network predictions were 92% for the final model, compared to 86% in the all data case for MCSVM. This shows that Neural Networks perform slightly better than our implementation for multi-classification support vector machines.
+        When comparing the MSVM Model to the Neural Networks from earlier, we see that accuracy is comparable between
+          the two methods, with a slight edge for the Neural Network in the end. The Neural Network predictions were 92%
+          for the final model, compared to 86% in the all data case for MSVM. This shows that Neural Networks perform
+          slightly better than our implementation for multi-classification support vector machines.
       </p>
       <span style="text-align: center;">
           <h5>Best ANN Accuracy: 92%</h5>
