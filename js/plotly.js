@@ -433,7 +433,7 @@ for (var i = 0; i < files.length; i++) {
       x: methods[i] + data['epochs'][i],
       y: data['accuracy'],
       type: 'bar',
-      name: methods[i] + '' + data['epochs'][i]
+      name: methods[i]
     };
     accuracy_loop.push(trace)
 }
@@ -445,6 +445,78 @@ var layout = {
         title: 'Method',
         showline: true,
         showgrid: true,
+        zeroline: false,
+        categoryorder: 'array',
+        categoryarray: 'value ascending'
+    },
+    yaxis: {
+        title: 'Accuracy',
+        showline: true,
+        showgrid: true,
+        zeroline: false
+
+    },
+
+};
+
+Plotly.newPlot('All-Studies-Accuracy', accuracy_loop, layout);
+
+/**
+* * * FINAL MLP PLOTS * * *
+**/
+
+data = loadData('data/MLP/final_mlp/acc_v_batch_size.csv')
+
+accuracy_traces = []
+    var trace = {
+      x: data['size'],
+      y: data['accuracy'],
+      mode: 'lines+markers',
+      type: 'scatter',
+    };
+    accuracy_traces.push(trace)
+
+
+var layout = {
+    title: 'Effect of Batch Size on Accuracy',
+    xaxis: {
+        title: 'Batch Size',
+        showline: true,
+        showgrid: true,
+        zeroline: false,
+        type: 'log'
+    },
+    yaxis: {
+        title: 'Accuracy',
+        showline: true,
+        showgrid: true,
+        zeroline: false
+    }
+};
+
+Plotly.newPlot('Batch_size', accuracy_traces, layout);
+
+
+////////PCA DIM PLOT
+
+data = loadData('data/MLP/final_mlp/acc_v_pca_dims.csv')
+
+accuracy_traces = []
+var trace = {
+      x: data['pca_size'],
+      y: data['accuracy'],
+      mode: 'lines+markers',
+      type: 'scatter',
+    };
+    accuracy_traces.push(trace)
+
+
+var layout = {
+    title: 'Effects of PCA Dimensions Number on Accuracy',
+    xaxis: {
+        title: 'Number of PCA Dimensions',
+        showline: true,
+        showgrid: true,
         zeroline: false
     },
     yaxis: {
@@ -452,11 +524,42 @@ var layout = {
         showline: true,
         showgrid: true,
         zeroline: false
-    },
-    ascending: true
+    }
 };
 
-Plotly.newPlot('All-Studies-Accuracy', accuracy_loop, layout);
+Plotly.newPlot('PCA_dims', accuracy_traces, layout);
+
+////////EPCOHS
+
+data = loadData('data/MLP/final_mlp/acc_v_epochs.csv')
+
+accuracy_traces = []
+var trace = {
+      x: data['epochs'],
+      y: data['accuracy'],
+      mode: 'lines+markers',
+      type: 'scatter',
+    };
+    accuracy_traces.push(trace)
+
+
+var layout = {
+    title: 'Epoch Number Affect on Accuracy',
+    xaxis: {
+        title: 'Number of Epochs',
+        showline: true,
+        showgrid: true,
+        zeroline: false
+    },
+    yaxis: {
+        title: 'Accuracy',
+        showline: true,
+        showgrid: true,
+        zeroline: false
+    }
+};
+
+Plotly.newPlot('epochs', accuracy_traces, layout);
 
 /**
 * * * Confusion Matrix * * *
