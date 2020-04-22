@@ -366,7 +366,7 @@ Summary Plot
 **/
 
 files = [
-    'data/MLP/activation_study/softplus-out/varied-epoch-exponential-sp_out.csv',
+    ['data/MLP/activation_study/softplus-out/varied-epoch-exponential-sp_out.csv',
     'data/MLP/activation_study/softplus-out/varied-epoch-hard_sigmoid-sp_out.csv',
     'data/MLP/activation_study/softplus-out/varied-epoch-linear-sp_out.csv',
     'data/MLP/activation_study/softplus-out/varied-epoch-relu-sp_out.csv',
@@ -374,8 +374,8 @@ files = [
     'data/MLP/activation_study/softplus-out/varied-epoch-softmax-sp_out.csv',
     'data/MLP/activation_study/softplus-out/varied-epoch-softplus-sp_out.csv',
     'data/MLP/activation_study/softplus-out/varied-epoch-softsign-sp_out.csv',
-    'data/MLP/activation_study/softplus-out/varied-epoch-tanh-sp_out.csv',
-    'data/MLP/activation_study/uniform-out/varied-epoch-exponential.csv',
+    'data/MLP/activation_study/softplus-out/varied-epoch-tanh-sp_out.csv'],
+    ['data/MLP/activation_study/uniform-out/varied-epoch-exponential.csv',
     'data/MLP/activation_study/uniform-out/varied-epoch-hard_sigmoid.csv',
     'data/MLP/activation_study/uniform-out/varied-epoch-linear.csv',
     'data/MLP/activation_study/uniform-out/varied-epoch-relu.csv',
@@ -383,8 +383,8 @@ files = [
     'data/MLP/activation_study/uniform-out/varied-epoch-softmax.csv',
     'data/MLP/activation_study/uniform-out/varied-epoch-softplus.csv',
     'data/MLP/activation_study/uniform-out/varied-epoch-softsign.csv',
-    'data/MLP/activation_study/uniform-out/varied-epoch-tanh.csv',
-    'data/MLP/hiddenlayer_study/varied-epoch-0HL.csv',
+    'data/MLP/activation_study/uniform-out/varied-epoch-tanh.csv'],
+    ['data/MLP/hiddenlayer_study/varied-epoch-0HL.csv',
     'data/MLP/hiddenlayer_study/varied-epoch-1HL.csv',
     'data/MLP/hiddenlayer_study/varied-epoch-2HL.csv',
     'data/MLP/hiddenlayer_study/varied-epoch-3HL.csv',
@@ -393,10 +393,10 @@ files = [
     'data/MLP/hiddenlayer_study/varied-epoch-10HL.csv',
     'data/MLP/hiddenlayer_study/varied-epoch-25HL.csv',
     'data/MLP/hiddenlayer_study/varied-epoch-50HL.csv',
-    'data/MLP/hiddenlayer_study/varied-epoch-100HL.csv'
+    'data/MLP/hiddenlayer_study/varied-epoch-100HL.csv']
 ]
 
-methods = ['exponential-sp_out',
+methods = [['exponential-sp_out',
     'hard_sigmoid-sp_out',
     'linear-sp_out',
     'relu-sp_out',
@@ -404,8 +404,8 @@ methods = ['exponential-sp_out',
     'softmax-sp_out',
     'softplus-sp_out',
     'softsign-sp_out',
-    'tanh-sp_out',
-    'exponential',
+    'tanh-sp_out'],
+    ['exponential',
     'hard_sigmoid',
     'linear',
     'relu',
@@ -413,8 +413,8 @@ methods = ['exponential-sp_out',
     'softmax',
     'softplus',
     'softsign',
-    'tanh',
-    '0HL',
+    'tanh'],
+    ['0HL',
     '1HL',
     '2HL',
     '3HL',
@@ -423,21 +423,37 @@ methods = ['exponential-sp_out',
     '10HL',
     '25HL',
     '50HL',
-    '100HL.',
-    ]
+    '100HL.']]
+
+studies = ['Activation Study <br>with SoftPlus Output',
+'Activation Study <br>with Uniform Activation',
+'Hidden Layer Study']
+
+accuracies = []
+for (var i = 0; i < files.length; i++) {
+    sub_acc = []
+    for (var j = 0; j < files[i].length; j++) {
+        data = loadData(files[i][j])
+        sub_acc.push(data['accuracy'][6])
+    }
+    accuracies.push(sub_acc)
+}
+
+accuracies = accuracies[0].map((col, i) => accuracies.map(row => row[i]));
+methods = methods[0].map((col, i) => methods.map(row => row[i]));
 
 accuracy_loop = []
-for (var i = 0; i < files.length; i++) {
-    data = loadData(files[i])
+for (var i = 0; i < accuracies.length; i++) {
     var trace = {
-      x: methods[i] + data['epochs'][i],
-      y: data['accuracy'],
+      x: studies,
+      y: accuracies[i],
       type: 'bar',
       name: methods[i]
     };
     accuracy_loop.push(trace)
 }
 
+console.log(accuracy_loop)
 
 var layout = {
     title: 'Study Methods Affect on Accuracy',
